@@ -1,7 +1,7 @@
 <?php
 
 /***************************************************************
- * Extension Manager/Repository config file for ext "cron_paypal".
+ * Extension Manager/Repository config file for ext "typdom3".
  *
  * Auto generated 22-07-2014 15:10
  *
