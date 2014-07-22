@@ -6,8 +6,7 @@ DOMPDF wrapper for TYPO3
 ## How to use it
 1. `cd path/to/your/typo3conf/ext && git clone https://github.com/julianxhokaxhiu/typdom3.git --recursive` or install it [directly from TER](http://typo3.org/extensions/repository/view/typdom3).
 2. Enable the "TypDom3" extension inside your Backend
-3.
-Somewhere in your code
+3. Somewhere in your code
 ```
 use \JX\Typdom3\TypDom3;
 ...
