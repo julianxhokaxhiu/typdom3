@@ -13,7 +13,7 @@
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'TypDom3',
 	'description' => 'DOMPDF wrapper for TYPO3',
-	'category' => 'plugin',
+	'category' => 'misc',
 	'author' => 'Julian Xhokaxhiu',
 	'author_email' => 'info@julianxhokaxhiu.com',
 	'shy' => '',
