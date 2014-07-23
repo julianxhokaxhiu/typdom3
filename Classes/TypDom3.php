@@ -32,35 +32,32 @@ class TypDom3 {
 
 	private $orientation;
 
+	private $options;
+
 	/**
-	 * Create the DOMPDF instance here
+	 * Create the DOMPDF instance here.
+	 * By default we compress the PDF and we use the portrait orientation.
 	 */
 	public function __construct() {
 		$this->api = new \DOMPDF();
+		$this->orientation = 'portrait';
+		$this->options = array(
+			'compress' => 1
+		);
 	}
 
 	// Library API
 
 	/**
-	 * Initialize the DOMPDF object with some basic parameters
-	 * @param array $config An array with parameters (see the source code for reference)
-	 */
-	public function init( $config ) {
-		$this->setPaper( $config['paper'] );
-		$this->setOrientation( $config['orientation'] );
-		$this->setBasePath( $config['basePath'] );
-	}
-
-	/**
 	 * Generate the PDF from the passed HTML. You can also define some settings for the generated HTML.
 	 * @param string $html The HTML content to be rendered
-	 * @param boolean $compress Compress the PDF. ( 0 | 1 ) [ default = 1 ]
+	 * @param boolean $options Options to pass to DOMPDF.
 	 * @return string The PDF content generated (literaly the result of the ->output() method of DOMPDF).
 	 */
-	public function generatePDF( $html, $compress = 1 ) {
-		$this->loadHTML( $html );
+	public function generatePdf( $options = array() ) {
+		$options = array_merge( $this->options, $options );
 		$this->api->render();
-		return $this->api->output( array( 'compress' => $compress ) );
+		return $this->api->output( $options );
 	}
 
 	// Settings API
@@ -97,11 +94,22 @@ class TypDom3 {
 	 * Pass HTML contento to the DOMPDF Class
 	 * @param string $html The HTML content
 	 */
-	public function loadHTML( $html = '' ) {
+	public function loadHtml( $html = '' ) {
 		if ( !empty( $html ) ) {
 			$this->api->load_html( $html );
 		} else
 			$this->throwErrorMessage( "You didn't specify any HTML code." );
+	}
+
+	/**
+	 * Load an HTML file from a specified Path.
+	 * @param type $path Path to the HTML file.
+	 */
+	public function loadHtmlFromFile( $path = '' ) {
+		if ( !empty( $path ) ) {
+			$this->api->load_html_file( $path );
+		} else
+			$this->throwErrorMessage( "You didn't specify a valid Path for the HTML." );
 	}
 
 	private function updateSettings() {
