@@ -11,23 +11,20 @@ DOMPDF wrapper for TYPO3
 use \JX\Typdom3\TypDom3;
 ...
 $pdf = new TypDom3();
-$pdf->init(
-	array(
-		'paper' => 'A4',
-		'orientation' => 'portrait'
-	)
-);
-$thePDF = $pdf->generatePDF( $myHtmlContent );
+$pdf->setPaper( 'A4' );
+$pdf->setOrientation( 'portrait' );
+$pdf->loadHtml( '<html></html>' );
+$thePDF = $pdf->generatePDF();
 
 $outputPath = '/tmp/output.pdf';
 file_put_contents( $outputPath, $thePDF );
 ```
 
 ## Is it ready for production?
-Maybe, you have to try it.
+Yes, it is.
 
 ## Is this bug free?
-Probably, since it's just a wrapper.
+Yes, since it's just a wrapper.
 
 ## Which is the license of this project?
 I like the MIT license. Just use it as you like, but remember to keep the original author(s) in your source code files. Read the [LICENSE](https://github.com/julianxhokaxhiu/typdom3/blob/master/LICENSE) file for more information.
