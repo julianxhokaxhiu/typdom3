@@ -11,7 +11,7 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'TypDom3',
+	'title' => 'TypDom3: DOMPDF wrapper for TYPO3',
 	'description' => 'DOMPDF wrapper for TYPO3',
 	'category' => 'misc',
 	'author' => 'Julian Xhokaxhiu',
@@ -21,7 +21,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'conflicts' => '',
 	'priority' => '',
 	'module' => '',
-	'state' => 'alpha',
+	'state' => 'beta',
 	'internal' => '',
 	'uploadfolder' => 0,
 	'createDirs' => '',
@@ -29,7 +29,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
 	'author_company' => '',
-	'version' => '0.0.3',
+	'version' => '0.0.4',
 	'constraints' => array(
 		'depends' => array(
 			'typo3' => '6.0.0-6.2.99',
