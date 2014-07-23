@@ -14,7 +14,7 @@ $pdf = new TypDom3();
 $pdf->setPaper( 'A4' );
 $pdf->setOrientation( 'portrait' );
 $pdf->loadHtml( '<html></html>' );
-$thePDF = $pdf->generatePDF();
+$thePDF = $pdf->generatePdf();
 
 $outputPath = '/tmp/output.pdf';
 file_put_contents( $outputPath, $thePDF );
