@@ -31,18 +31,21 @@ Follow us on [![Twitter](http://twitter-badges.s3.amazonaws.com/twitter-a.png)](
  * Image support (gif, png (8, 24 and 32 bit with alpha channel), bmp & jpeg)
  * No dependencies on external PDF libraries, thanks to the R&OS PDF class
  * Inline PHP support
+ * Basic SVG support
  
 ## Requirements
 
  * PHP version 5.3.0 or higher
  * DOM extension
  * GD extension
+ * MBString extension
+ * php-font-lib
+ * php-svg-lib
 
 ### Recommendations
 
- * MBString extension: provides internationalization support. Dompdf has limited
-   internationalization support when this extension is not enabled.
  * OPcache (OPcache, XCache, APC, etc.): improves performance
+ * IMagick or GMagick extension: improves image processing performance
 
 Visit the wiki for more information:
 https://github.com/dompdf/dompdf/wiki/Requirements
@@ -68,35 +71,19 @@ DejaVu Sans, DejaVu Serif, and DejaVu Sans Mono.
 
 ### Install with composer
 
-To install with Composer, simply add the requirement to your `composer.json`
-file:
-
-```json
-{
-  "require" : {
-    "dompdf/dompdf" : "dev-master"
-  }
-}
-```
-
-And run Composer to update your dependencies:
+To install with [Composer](https://getcomposer.org/), simply require the latest version of this package.
 
 ```bash
-$ curl -sS http://getcomposer.org/installer | php
-$ php composer.phar update
+composer require dompdf/dompdf:0.7.x@beta
 ```
 
-Most Composer applications typically only require the Composer autoloader in order
-to load all class files. Dompdf, however, still needs a bit of a kick-start by
-including its own autoloder.
+Make sure that the autoload file from Composer is loaded.
 
 ```php
 // somewhere early in your project's loading, require the Composer autoloader
 // see: http://getcomposer.org/doc/00-intro.md
 require 'vendor/autoload.php';
 
-// include dompdf's autoloader
-require 'vendor/dompdf/dompdf/src/autoload.inc.php';
 ```
 
 ### Download and install
@@ -108,14 +95,11 @@ will reside
  * Or download a nightly (the latest, unreleased code) from
    http://eclecticgeek.com/dompdf
 
-Add references to dompdf, libraries and helper functions in your PHP:
+Require dompdf, libraries, and helper functions in your PHP:
 
 ```php
-// include autoloaders and helper functions
-require_once 'dompdf/lib/html5lib/Parser.php';
-require_once 'dompdf/lib/php-font-lib/src/FontLib/Autoloader.php';
-require_once 'dompdf/src/functions.inc.php';
-require_once 'dompdf/src/autoload.inc.php';
+// include autoloader
+require_once 'dompdf/autoload.inc.php';
 ```
 
 ### Install with git
@@ -127,17 +111,18 @@ the following commands:
 git clone https://github.com/dompdf/dompdf.git .
 git clone https://github.com/PhenX/php-font-lib.git lib/php-font-lib
 cd lib/php-font-lib
-git checkout 0.3.1
+git checkout 0.4
+cd ..
+git clone https://github.com/PhenX/php-svg-lib.git php-svg-lib
+cd php-svg-lib
+git checkout v0.1
 ```
 
-Add references to dompdf, libraries and helper functions in your PHP:
+Require dompdf, libraries, and helper functions in your PHP:
 
 ```php
-// include autoloaders and helper functions
-require_once 'dompdf/lib/html5lib/Parser.php';
-require_once 'dompdf/lib/php-font-lib/src/FontLib/Autoloader.php';
-require_once 'dompdf/src/functions.inc.php';
-require_once 'dompdf/src/autoload.inc.php';
+// include autoloader
+require_once 'dompdf/autoload.inc.php';
 ```
 
 ## Quick Start
@@ -174,8 +159,7 @@ $dompdf->stream();
    [Tidy](http://tidy.sourceforge.net) or the
    [W3C Markup Validation Service](http://validator.w3.org)).
  * Large files or large tables can take a while to render.
- * CSS float is in development and disabled by default but can be enabled at runtime
-   (`$dompdf->set_option('isCssFloatEnabled', true);.
+ * CSS float is in development and may not produce the desired result
 
 ---
 

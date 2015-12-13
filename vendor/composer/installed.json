@@ -1,20 +1,56 @@
 [
     {
-        "name": "phenx/php-font-lib",
-        "version": "0.3.1",
-        "version_normalized": "0.3.1.0",
+        "name": "phenx/php-svg-lib",
+        "version": "0.1",
+        "version_normalized": "0.1.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/PhenX/php-font-lib.git",
-            "reference": "d13682b7e27d14a6323c441426f3dde1cd86c751"
+            "url": "https://github.com/PhenX/php-svg-lib.git",
+            "reference": "b419766515b3426c6da74b0e29e93d71c4f17099"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/PhenX/php-font-lib/zipball/d13682b7e27d14a6323c441426f3dde1cd86c751",
-            "reference": "d13682b7e27d14a6323c441426f3dde1cd86c751",
+            "url": "https://api.github.com/repos/PhenX/php-svg-lib/zipball/b419766515b3426c6da74b0e29e93d71c4f17099",
+            "reference": "b419766515b3426c6da74b0e29e93d71c4f17099",
             "shasum": ""
         },
-        "time": "2014-03-19 17:15:11",
+        "time": "2015-05-06 18:49:49",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Svg\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Ménager",
+                "email": "fabien.menager@gmail.com"
+            }
+        ],
+        "description": "A library to read, parse and export to PDF SVG files.",
+        "homepage": "https://github.com/PhenX/php-svg-lib"
+    },
+    {
+        "name": "phenx/php-font-lib",
+        "version": "0.4",
+        "version_normalized": "0.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PhenX/php-font-lib.git",
+            "reference": "b8af0cacdc3cbf1e41a586fcb78f506f4121a088"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PhenX/php-font-lib/zipball/b8af0cacdc3cbf1e41a586fcb78f506f4121a088",
+            "reference": "b8af0cacdc3cbf1e41a586fcb78f506f4121a088",
+            "shasum": ""
+        },
+        "time": "2015-05-06 20:02:39",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -37,37 +73,49 @@
     },
     {
         "name": "dompdf/dompdf",
-        "version": "v0.7.0-beta",
-        "version_normalized": "0.7.0.0-beta",
+        "version": "v0.7.0-beta2",
+        "version_normalized": "0.7.0.0-beta2",
         "source": {
             "type": "git",
             "url": "https://github.com/dompdf/dompdf.git",
-            "reference": "ffbfa8b2b38f109a111d3d260a9f30c49a1b3c3e"
+            "reference": "a2d069805e1eb2e0fdd8db1a0b877f3ea4f04126"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/dompdf/dompdf/zipball/ffbfa8b2b38f109a111d3d260a9f30c49a1b3c3e",
-            "reference": "ffbfa8b2b38f109a111d3d260a9f30c49a1b3c3e",
+            "url": "https://api.github.com/repos/dompdf/dompdf/zipball/a2d069805e1eb2e0fdd8db1a0b877f3ea4f04126",
+            "reference": "a2d069805e1eb2e0fdd8db1a0b877f3ea4f04126",
             "shasum": ""
         },
         "require": {
-            "phenx/php-font-lib": "0.3.*",
+            "ext-dom": "*",
+            "ext-gd": "*",
+            "ext-mbstring": "*",
+            "phenx/php-font-lib": "0.4.*",
+            "phenx/php-svg-lib": "0.1.*",
             "php": ">=5.3.0"
         },
         "require-dev": {
             "phpunit/phpunit": "3.7.*"
         },
-        "time": "2015-05-01 14:26:17",
+        "time": "2015-09-25 21:40:53",
         "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-develop": "0.7-dev"
+            }
+        },
         "installation-source": "dist",
         "autoload": {
-            "psr-0": {
-                "Dompdf": "src/"
-            }
+            "psr-4": {
+                "Dompdf\\": "src/"
+            },
+            "classmap": [
+                "lib/"
+            ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "LGPL"
+            "LGPL-3.0"
         ],
         "authors": [
             {
