@@ -24,6 +24,8 @@
 
 namespace JX\Typdom3;
 
+use Dompdf\Dompdf;
+
 class TypDom3 {
 
 	private $api;
@@ -39,7 +41,7 @@ class TypDom3 {
 	 * By default we compress the PDF and we use the portrait orientation.
 	 */
 	public function __construct() {
-		$this->api = new \DOMPDF();
+		$this->api = new Dompdf();
 		$this->orientation = 'portrait';
 		$this->options = array(
 			'compress' => 1
@@ -86,7 +88,7 @@ class TypDom3 {
 	 */
 	public function setBasePath( $basePath = '' ) {
 		if ( !empty( $basePath ) ) {
-			$this->api->set_base_path( $basePath );
+			$this->api->setBasePath( $basePath );
 		}
 	}
 
@@ -96,7 +98,7 @@ class TypDom3 {
 	 */
 	public function loadHtml( $html = '' ) {
 		if ( !empty( $html ) ) {
-			$this->api->load_html( $html );
+			$this->api->loadHtml( $html );
 		} else
 			$this->throwErrorMessage( "You didn't specify any HTML code." );
 	}
@@ -107,14 +109,14 @@ class TypDom3 {
 	 */
 	public function loadHtmlFromFile( $path = '' ) {
 		if ( !empty( $path ) ) {
-			$this->api->load_html_file( $path );
+			$this->api->loadHtmlFile( $path );
 		} else
 			$this->throwErrorMessage( "You didn't specify a valid Path for the HTML." );
 	}
 
 	private function updateSettings() {
 		// Set the paper kind and orientation
-		$this->api->set_paper( $this->paper, $this->orientation );
+		$this->api->setPaper( $this->paper, $this->orientation );
 	}
 
 	/**
